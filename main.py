@@ -55,7 +55,7 @@ class App(QMainWindow):
         fileDialog.setViewMode(QFileDialog.List)
         filter = "Videos *.mp4; *.avi; *.mkv"
         fileDialogTitle = "Load Video"
-        initialDir = "D:\\"
+        initialDir = "E:\\"
         self.fileName, _filter = fileDialog.getOpenFileNames(self.centralWidget, fileDialogTitle, initialDir, filter)
         if not self.fileName:
             print("No files")
