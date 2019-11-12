@@ -8,7 +8,7 @@ class Controller:
     def __init__(self):
         self.face_detected = False
         self.player = None
-        self.cascPath = "haarcascade_frontalface_default.xml"
+        self.cascPath = "haarcascade_frontalface_default.xml"        
         self.faceCascade = None
         self.video_capture = None
 
@@ -53,6 +53,6 @@ class Controller:
                 else:
                     pass
 
-    def player_close(self):
+    def player_close(self):            
         self.player.stop()
-        self.video_capture.release()
+        self.video_capture.release()      
