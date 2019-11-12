@@ -1,2 +1,2 @@
-# controlling-vlc-with-face-detection
+# face-detect-control-vlc
  VLC Media Player Controlling with Face Detection OpenCV Python
