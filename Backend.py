@@ -4,20 +4,20 @@ from time import sleep
 import keyboard
 
 
-class Controller:
+class FaceDetector:
     def __init__(self):
         self.face_detected = False
         self.player = None
-        self.cascPath = "haarcascade_frontalface_default.xml"        
+        self.cascPath = "haar_cascade/haarcascade_frontalface_default.xml"
         self.faceCascade = None
         self.video_capture = None
 
-    def initiate_player(self, filePath):
+    def player_init(self, filePath):
         self.player = vlc.MediaPlayer(filePath)
         self.faceCascade = cv2.CascadeClassifier(self.cascPath)
         self.video_capture = cv2.VideoCapture(0)
 
-    def face_detector(self):
+    def detect_face(self):
         global count
         count = 1
         if not self.video_capture.isOpened():
@@ -45,7 +45,7 @@ class Controller:
 
     def player_start(self):
         while True:
-            if self.face_detector():
+            if self.detect_face():
                 self.player.play()
             else:
                 if self.player.is_playing():
@@ -55,4 +55,4 @@ class Controller:
 
     def player_close(self):            
         self.player.stop()
-        self.video_capture.release()      
+        self.video_capture.release()

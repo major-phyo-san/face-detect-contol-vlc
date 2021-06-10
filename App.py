@@ -1,16 +1,16 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QAction, qApp, QFileDialog, QPushButton
 from PyQt5.QtGui import QIcon
-from controller import Controller
+from Backend import FaceDetector
 
 
-class App(QMainWindow):
+class AppLayout(QMainWindow):
     appTitle = "Face Detect VLC Controller"
     appMarginLeft = 100
     appMarginTop = 100
     appWidth = 640
     appHeight = 480
-    controller = Controller()
+    faceDetector = FaceDetector()
     fileName = None
 
     def __init__(self):
@@ -62,17 +62,17 @@ class App(QMainWindow):
         else:
             print(str(len(self.fileName)) + " files selected")
             print(self.fileName[0])
-            self.controller.initiate_player(self.fileName[0])
+            self.faceDetector.player_init(self.fileName[0])
 
     def playVideo(self):
-        self.controller.player_start()
+        self.faceDetector.player_start()
 
     def closePlayer(self):
-        self.controller.player_close()
+        self.faceDetector.player_close()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = App()
+    ex = AppLayout()
     ex.show()
     sys.exit(app.exec_())
